@@ -18,8 +18,15 @@ task-board-samurai プロジェクト。
 
 ## 開発コマンド
 
-(ビルド・テスト・Lint などのコマンドが決まり次第、ここに追記してください。)
+- `npm install`: 依存パッケージのインストール
+- `npm run dev`: 開発サーバーの起動（Vite）
+- `npm run build`: 本番ビルド
+- `npm run lint`: Lint 実行（oxlint）
+- `npm run preview`: ビルド成果物のプレビュー
 
 ## アーキテクチャ
 
-(主要なディレクトリ構成や設計方針が固まり次第、ここに追記してください。)
+- Vite + React (JSX) 構成。
+- `src/App.jsx`: タスクボードのメインコンポーネント（タスクの追加・完了切り替え・削除）。
+- `src/App.css`: タスクボードのスタイル。
+- `src/main.jsx`: エントリーポイント。
