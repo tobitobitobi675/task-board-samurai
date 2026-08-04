@@ -16,6 +16,30 @@ task-board-samurai プロジェクト。
 - pre-commit / CI などのフックは `--no-verify` で無視せず、失敗した場合は原因を修正してから再度コミットする。
 - シークレットや `.env` などの機密情報を含むファイルは絶対にコミットしない。
 
+## デプロイ先
+
+- 本番環境: GitHub Pages — https://tobitobitobi675.github.io/task-board-samurai/
+- `main` ブランチに push すると、GitHub Actions (`.github/workflows/deploy.yml`) が自動的にビルド・デプロイを実行する。
+- デプロイ状況は `gh run list --repo tobitobitobi675/task-board-samurai` で確認できる。
+- リポジトリは GitHub Pages 利用のため Public 設定にしている。
+
+## 技術スタック
+
+- ビルドツール: Vite
+- フレームワーク: React 19 (JSX、`react`/`react-dom`)
+- 言語: JavaScript（TypeScript は未導入）
+- Lint: oxlint
+- 状態管理: React の `useState` / `useEffect` のみ（外部の状態管理ライブラリは使用しない）
+- データ永続化: ブラウザの `localStorage`（`JSON.stringify` / `JSON.parse` で保存・復元）
+- CI/CD: GitHub Actions（`.github/workflows/deploy.yml`）
+
+## コンポーネントの命名規約
+
+- コンポーネントファイル・関数名は `PascalCase`（例: `App.jsx` の `function App()`）。
+- イベントハンドラ・ロジック関数は `動詞 + 名詞` の `camelCase`（例: `addTask`, `toggleTask`, `deleteTask`）。
+- CSS クラス名は `kebab-case`（例: `task-form`, `task-list`, `task.done`）。状態を表すクラスは `done` のように単純な形容詞/状態名を追加する形にする。
+- 1 コンポーネント = 1 ファイル（`ComponentName.jsx` + 必要に応じて `ComponentName.css`）とし、コンポーネントが増えてきたら `src/components/` 配下に切り出す。
+
 ## 開発コマンド
 
 - `npm install`: 依存パッケージのインストール
